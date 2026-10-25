@@ -141,7 +141,7 @@ mod tests {
                        "role": null, "gpu": [{"name": "Example GPU", "vram_mb": 16384}], "hostname": "dév"});
         let ours = to_bytes(&v);
         let py = std::process::Command::new("python3")
-            .args(["-c", "import json,sys; d=json.load(sys.stdin); sys.stdout.write(json.dumps(d, sort_keys=True, separators=(',', ':')))"])
+            .args(["-c", "import json,sys; d=json.load(sys.stdin.buffer); sys.stdout.write(json.dumps(d, sort_keys=True, separators=(',', ':')))"])
             .stdin(std::process::Stdio::piped())
             .stdout(std::process::Stdio::piped())
             .spawn();
