@@ -1,0 +1,23 @@
+[package]
+name = "keys-cli"
+description = "niyantrak-keys: plan and rotate per-connection SSH keys (dry run by default)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+readme = "../../README.md"
+keywords = ["ssh", "key-rotation", "security", "devops", "cli"]
+categories = ["command-line-utilities"]
+
+[[bin]]
+name = "niyantrak-keys"
+path = "src/main.rs"
+
+[dependencies]
+keys-engine = { path = "../keys-engine", version = "0.1.0" }
+serde_json = "1"
+
+[dev-dependencies]
+tempfile = "3"

@@ -1,0 +1,11 @@
+[workspace]
+resolver = "2"
+members = ["crates/keys-engine", "crates/keys-cli"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+repository = "https://github.com/vigyanbytes/niyantrak-keys"
+homepage = "https://github.com/vigyanbytes/niyantrak-keys"
+authors = ["VigyanBytes <info@vigyanbytes.com>"]

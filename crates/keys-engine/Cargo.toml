@@ -1,0 +1,29 @@
+[package]
+name = "keys-engine"
+description = "Niyantrak per-connection SSH key rotation engine"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+readme = "../../README.md"
+keywords = ["ssh", "key-rotation", "security", "devops"]
+categories = ["command-line-utilities", "cryptography"]
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+base64 = "0.22"
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12"] }
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[features]
+# Run tests/real_sshd.rs against a throwaway local sshd (needs /usr/sbin/sshd, ssh and ssh-keygen).
+real-sshd = []
+
+[dev-dependencies]
+tempfile = "3"

@@ -1,0 +1,7 @@
+niyantrak-keys
+Copyright 2026 VigyanBytes
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This product depends on third-party crates (rustls, ring, serde, serde_json, sha2, base64, libc and their
+dependencies), each under its own licence, as listed in Cargo.lock and checked by deny.toml.

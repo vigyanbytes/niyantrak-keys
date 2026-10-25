@@ -1,0 +1,15 @@
+{
+  "ssh_rotation": {
+    "max_age_days": 90,
+    "overdue_alert_days": 14,
+    "retired_keep_days": 30,
+    "connections": [
+      { "source": "ws-01", "user": "alice", "target": "gpu-01", "target_user": "alice" },
+      { "source": "ws-01", "user": "alice", "target": "edge-01", "target_user": "alice",
+        "legacy_key": "~/.ssh/id_ed25519" },
+      { "source": "ws-01", "user": "alice", "target": "laptop-01", "target_user": "alice",
+        "target_os": "windows", "hostname": "laptop-01.lan", "port": 22 },
+      { "source": "gpu-01", "user": "root", "target": "ws-01", "target_user": "root" }
+    ]
+  }
+}

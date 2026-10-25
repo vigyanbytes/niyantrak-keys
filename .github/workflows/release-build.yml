@@ -1,0 +1,44 @@
+# Builds release binaries for a version tag and keeps them as workflow artifacts with SHA-256 sums.
+# Publishing the GitHub Release itself is a separate step done by a maintainer.
+name: release-build
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-latest, target: x86_64-unknown-linux-gnu, name: linux-x86_64, ext: "" }
+          - { os: windows-latest, target: x86_64-pc-windows-msvc, name: windows-x86_64, ext: ".exe" }
+          - { os: macos-latest, target: aarch64-apple-darwin, name: macos-aarch64, ext: "" }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+      - run: cargo test --workspace --locked
+      - run: cargo build --release --locked -p keys-cli --target ${{ matrix.target }}
+      - name: Package
+        shell: bash
+        run: |
+          case "$GITHUB_REF_NAME" in v*) ver="$GITHUB_REF_NAME" ;; *) ver="dev-${GITHUB_SHA::7}" ;; esac
+          mkdir dist
+          cp "target/${{ matrix.target }}/release/niyantrak-keys${{ matrix.ext }}" "dist/niyantrak-keys-${ver}-${{ matrix.name }}${{ matrix.ext }}"
+          cd dist
+          if command -v sha256sum >/dev/null; then sha256sum * > "SHA256SUMS-${{ matrix.name }}"; else shasum -a 256 * > "SHA256SUMS-${{ matrix.name }}"; fi
+          cat SHA256SUMS-*
+      - uses: actions/upload-artifact@v4
+        with:
+          name: niyantrak-keys-${{ matrix.name }}
+          path: dist/*
+          if-no-files-found: error
