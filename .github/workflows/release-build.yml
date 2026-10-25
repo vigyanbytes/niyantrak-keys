@@ -1,5 +1,5 @@
 # Builds release binaries for a version tag and keeps them as workflow artifacts with SHA-256 sums.
-# Publishing the GitHub Release itself is a separate step done by a maintainer.
+# Publishing the binaries (on the VigyanBytes download portal) is a separate step done by a maintainer.
 name: release-build
 
 on:

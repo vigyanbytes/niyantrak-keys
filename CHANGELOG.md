@@ -23,4 +23,4 @@ First public release (alpha).
   (`--features real-sshd`).
 
 [Unreleased]: https://github.com/vigyanbytes/niyantrak-keys/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/vigyanbytes/niyantrak-keys/releases/tag/v0.1.0
+[0.1.0]: https://github.com/vigyanbytes/niyantrak-keys/tree/v0.1.0

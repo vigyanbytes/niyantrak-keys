@@ -2,6 +2,10 @@
 
 [![CI](https://github.com/vigyanbytes/niyantrak-keys/actions/workflows/ci.yml/badge.svg)](https://github.com/vigyanbytes/niyantrak-keys/actions/workflows/ci.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+![Platforms: Linux, Windows, macOS](https://img.shields.io/badge/CI-Linux%20%7C%20Windows%20%7C%20macOS-555.svg)
+![Rust](https://img.shields.io/badge/rust-stable-CE422B.svg?logo=rust&logoColor=white)
+
+*Part of [Niyantrak](https://github.com/vigyanbytes/niyantrak): **Use any AI. Expose no one. Prove everything.***
 
 `niyantrak-keys` rotates SSH keys **one connection at a time**, without locking you out. It plans first, it runs
 dry by default, and it writes every step to an audit log that holds fingerprints, never key material.
@@ -48,11 +52,11 @@ removed only from targets that no other connection still reaches with it.
 
 ## Install
 
-### Release binaries
+### Prebuilt binaries
 
-Download the binary for your platform from
-[Releases](https://github.com/vigyanbytes/niyantrak-keys/releases), check it against `SHA256SUMS`, and put it on
-your `PATH`:
+Prebuilt binaries for Linux, Windows and macOS, with SHA-256 sums, will be offered from the VigyanBytes download
+portal ([vigyanbytes.com](https://www.vigyanbytes.com)); there are no GitHub release downloads. Until then, build
+from source. With a binary and its `SHA256SUMS`:
 
 ```bash
 sha256sum -c SHA256SUMS --ignore-missing
@@ -172,10 +176,8 @@ examples/            connections.json
 
 ## The Niyantrak app
 
-The **Niyantrak desktop app** (Windows and Linux) is built on this engine and adds connection cards with key-age
-rings, guided rotation with live progress of the 7 steps, desktop notifications when keys are due, and a guided
-join. It is a commercial product from [VigyanBytes](https://vigyanbytes.com); write to info@vigyanbytes.com.
-Everything the app does to keys goes through the code in this repository.
+A commercial desktop app built on this engine is available from [VigyanBytes](https://www.vigyanbytes.com)
+(info@vigyanbytes.com). Everything it does to keys goes through the code in this repository.
 
 ## Contributing and security
 
